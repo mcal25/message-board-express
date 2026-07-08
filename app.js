@@ -2,14 +2,15 @@ import express from 'express';
 import ejs from 'ejs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { appRouter } from './routes/appRouter.js';
 
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const assetsPath = path.join(__dirname, 'public');
-const PORT = process.env.PORT || 3001;
-
+const PORT = process.env.PORT || 3002;
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/', appRouter);
 

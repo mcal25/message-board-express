@@ -1,6 +1,10 @@
 {
+  "type": "module",
   "dependencies": {
     "ejs": "^6.0.1",
     "express": "^5.2.1"
+  },
+  "scripts": {
+    "start": "node --watch app.js"
   }
 }
