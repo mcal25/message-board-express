@@ -6,12 +6,14 @@ const messages = [
   {
     text: "Hi there!",
     user: "Amando",
-    added: new Date()
+    added: new Date(),
+    id: 1,
   },
   {
     text: "Hello World!",
     user: "Charles",
-    added: new Date()
+    added: new Date(),
+    id: 2,
   }
 ];
 
@@ -23,9 +25,21 @@ appRouter.get('/new', (req, res) => {
     res.render('form');
 })
 
+appRouter.get('/:messageId', (req, res) => {
+    const { messageId } = req.params;
+    const messageIWant = messages.find((message) => String(message.id) === messageId);
+
+    if (!messageIWant) {
+        return res.status(404).send('Message not found');
+    }
+
+    res.render('messages/message', { message: messageIWant });
+});
+
 appRouter.post('/new', (req, res) => {
-    messages.push({ text: req.body.messageText, user: req.body.authorName, added: new Date()});
-    res.redirect('/');
+    const newMessage = {text: req.body.messageText, user: req.body.authorName, added: new Date(), id: crypto.randomUUID()};
+    messages.push(newMessage);
+    res.render('messages/message', { message: newMessage });
 });
 
 

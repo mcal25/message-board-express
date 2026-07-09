@@ -4,14 +4,18 @@
     </head>
     <body>
         <h1>Message Board</h1>
+        <br>
+        <button><a href="/new">New</a></button>
+        <br>
+        <br>
         <% messages.forEach((message) => { %>
             <div>
-                <ul>
-                    <li><%= message.text %></li>
-                    <li><%= message.user %></li>
-                    <li><%= message.added %></li>
-                </ul>
+                <h2><%= message.user %>:</h2>
+                    <p><%= message.text %></p>
+                    <p><%= message.added %></p>
+                <button><a href="/<%= message.id %>">Details</a></button>
             </div>
+            <br>
         <% }) %>
     </body>
 </html>
