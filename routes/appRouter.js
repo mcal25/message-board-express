@@ -39,7 +39,7 @@ appRouter.get('/:messageId', (req, res) => {
 appRouter.post('/new', (req, res) => {
     const newMessage = {text: req.body.messageText, user: req.body.authorName, added: new Date(), id: crypto.randomUUID()};
     messages.push(newMessage);
-    res.render('messages/message', { message: newMessage });
+    res.redirect('/');
 });
 
 

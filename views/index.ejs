@@ -5,7 +5,7 @@
     <body>
         <h1>Message Board</h1>
         <br>
-        <button><a href="/new">New</a></button>
+        <a href="/new"><button>New</button></a>
         <br>
         <br>
         <% messages.forEach((message) => { %>
@@ -13,7 +13,7 @@
                 <h2><%= message.user %>:</h2>
                     <p><%= message.text %></p>
                     <p><%= message.added %></p>
-                <button><a href="/<%= message.id %>">Details</a></button>
+                <a href="/<%= message.id %>"><button>Details</button></a>
             </div>
             <br>
         <% }) %>
